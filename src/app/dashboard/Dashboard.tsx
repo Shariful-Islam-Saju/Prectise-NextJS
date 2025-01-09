@@ -1,12 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/types";
+
 import React from "react";
 
-const Dashboard = ({
-  user,
-}: {
-  user: KindeUser<Record<string, undefined>> | undefined;
-}) => {
+const Dashboard = () => {
   return (
     <div className="min-h-screen flex">
       {/* Sidebar */}
