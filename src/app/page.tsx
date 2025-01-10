@@ -1,10 +1,7 @@
 import Users from "@/components/Users";
-import { Key } from "react";
+
 
 export default async function Home() {
-  const userData = await fetch("http://localhost:4000/users");
-  console.log(userData)
-  const users = await userData.json();
 
   return (
     <div className="bg-gray-100 min-h-[70vh]">
@@ -24,17 +21,7 @@ export default async function Home() {
       {/* Main Content */}
       <main className="mt-10 pb-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* users mapping */}
-            {users?.map(
-              (
-                user: { name: string; age: number },
-                index: Key | null | undefined
-              ) => (
-                <Users key={index} user={user} />
-              )
-            )}
-          </div>
+         <Users />
         </div>
       </main>
 
