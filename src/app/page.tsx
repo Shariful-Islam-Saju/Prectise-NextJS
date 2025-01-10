@@ -1,5 +1,10 @@
+import Users from "@/components/Users";
+import { Key } from "react";
 
 export default async function Home() {
+  const userData = await fetch("http://localhost:4000/users");
+  console.log(userData)
+  const users = await userData.json();
 
   return (
     <div className="bg-gray-100 min-h-[70vh]">
@@ -17,35 +22,18 @@ export default async function Home() {
       </header>
 
       {/* Main Content */}
-      <main className="mt-10">
+      <main className="mt-10 pb-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Card 1 */}
-            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
-              <h2 className="text-2xl font-bold text-gray-800">Feature One</h2>
-              <p className="mt-2 text-gray-600">
-                Learn about our first amazing feature and how it can benefit
-                you.
-              </p>
-            </div>
-
-            {/* Card 2 */}
-            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
-              <h2 className="text-2xl font-bold text-gray-800">Feature Two</h2>
-              <p className="mt-2 text-gray-600">
-                Discover the second feature that makes our app stand out.
-              </p>
-            </div>
-
-            {/* Card 3 */}
-            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
-              <h2 className="text-2xl font-bold text-gray-800">
-                Feature Three
-              </h2>
-              <p className="mt-2 text-gray-600">
-                Check out our third feature and see what it has to offer.
-              </p>
-            </div>
+            {/* users mapping */}
+            {users?.map(
+              (
+                user: { name: string; age: number },
+                index: Key | null | undefined
+              ) => (
+                <Users key={index} user={user} />
+              )
+            )}
           </div>
         </div>
       </main>
